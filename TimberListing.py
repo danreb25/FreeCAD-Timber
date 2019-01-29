@@ -62,7 +62,7 @@ def makeTimberListing(objs, export):
     tb.printTimberList()
     #return tb.getTimberList()
 
-def listingfilter(items):
+def listingfilter(items,isOnlyVisible=True):
     doc = FreeCAD.ActiveDocument
     objs = doc.Objects
     objlist = []
@@ -81,7 +81,7 @@ def listingfilter(items):
                         #print(" - hasattr Proxy : ok")
                         if hasattr(obj.Proxy,"Type"):
                             #print(" - hasattr Type : ok")
-                            if FreeCADGui.ActiveDocument.getObject(obj.Name).Visibility :
+                            if ( (not isOnlyVisible) or FreeCADGui.ActiveDocument.getObject(obj.Name).Visibility) :
                                 #print(" - Visibility : True")
                                 try:
                                     if obj.Tag == item :
@@ -129,24 +129,31 @@ class _ListingTaskPanel:
         self.grid.addWidget(self.title, 1, 0)
         self.textobjlist = QtGui.QLabel(self.form)
         self.grid.addWidget(self.textobjlist, 1, 1)
+        self.checkOnlyVisible = QtGui.QCheckBox(self.form)
+        self.checkOnlyVisible.setChecked( QtCore.Qt.Checked )
+        self.grid.addWidget(self.checkOnlyVisible, 2, 1)
 
         self.taglistwidget = QtGui.QListWidget(self.form)
         self.taglistwidget.setSelectionMode(QtGui.QAbstractItemView.ExtendedSelection)
         #QtGui.QAbstractItemView([parent=self.taglistwidget])
-        self.grid.addWidget(self.taglistwidget, 2, 0)
+        self.grid.addWidget(self.taglistwidget, 3, 0)
         self.taglistwidget.addItem("Selection")
         for tag in getTagList():
             self.taglistwidget.addItem(tag)
         self.filteredlistwidget = QtGui.QListWidget(self.form)
-        self.grid.addWidget(self.filteredlistwidget, 2, 1)
+        self.grid.addWidget(self.filteredlistwidget, 3, 1)
         self.infoText =  QtGui.QLabel(self.form)
-        self.grid.addWidget(self.infoText, 3, 0)
+        self.grid.addWidget(self.infoText, 4, 0)
         self.checkSpreadsheet = QtGui.QCheckBox(self.form)
         self.checkShape = QtGui.QCheckBox(self.form)
-        self.grid.addWidget(self.checkSpreadsheet, 4, 0)
-        self.grid.addWidget(self.checkShape, 4, 1)
-
+        self.grid.addWidget(self.checkSpreadsheet, 5, 0)
+        self.grid.addWidget(self.checkShape, 5, 1)
+        # events
         QtCore.QObject.connect(self.taglistwidget,QtCore.SIGNAL("itemSelectionChanged()"),self.makeFiltered)
+        #>Qt5 ?? not itemSelectionChanged
+        #QtCore.QObject.connect(self.checkOnlyVisible,QtCore.SIGNAL("stateChanged()"),self.makeFiltered)
+        #Qt5
+        self.checkOnlyVisible.stateChanged.connect(self.makeFiltered)
 
         self.retranslateUi(self.form)
 
@@ -155,7 +162,7 @@ class _ListingTaskPanel:
         for item in self.taglistwidget.selectedItems():
             items.append(item.text())
         #print items
-        objlist = listingfilter(items)
+        objlist = listingfilter(items,self.checkOnlyVisible.isChecked())
         self.filteredlistwidget.clear()
         for obj in objlist:
             self.filteredlistwidget.addItem(obj.Label)
@@ -166,7 +173,7 @@ class _ListingTaskPanel:
         for item in self.taglistwidget.selectedItems():
             items.append(item.text())
         print(items)
-        objlist = listingfilter(items)
+        objlist = listingfilter(items,self.checkOnlyVisible.isChecked())
         if self.checkSpreadsheet.isChecked() :
             export.append("Spreadsheet")
         if self.checkShape.isChecked() :
@@ -188,6 +195,8 @@ class _ListingTaskPanel:
         self.infoText.setText(QT_TRANSLATE_NOOP("Timber", "Export"))
         self.checkSpreadsheet.setText(QT_TRANSLATE_NOOP("Timber", "Make Spreadsheet"))
         self.checkShape.setText(QT_TRANSLATE_NOOP("Timber", "Make aligned shapes"))
+        self.checkOnlyVisible.setText(QT_TRANSLATE_NOOP("Timber", "Show only visible Obj."))
+
 
 class Listing():
     def __init__(self, objs, export):
