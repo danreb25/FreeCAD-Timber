@@ -29,9 +29,11 @@
 import FreeCAD
 import FreeCADGui
 import Ui_EC5Dialog
-from PyQt4 import QtCore, QtGui
+from PySide import QtCore, QtGui
+#from PyQt4 import QtCore, QtGui
 #import oshE5data
 import oshpoutre
+from PySide.QtCore import QT_TRANSLATE_NOOP
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -149,7 +151,7 @@ class EC5_Poutre():
             results_flexion += "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ff0000;\">NOK</span></p></body></html>"
 #        results_flexion.format(sigmaMd, fmd, tauxTravail)
 
-        gui.textBrowser_2.setHtml(QtGui.QApplication.translate("Dialog", results_flexion, None, QtGui.QApplication.UnicodeUTF8))
+        gui.textBrowser_2.setHtml(QtCore.QT_TRANSLATE_NOOP("Dialog", results_flexion))
         """
         print ("Le DIC", p.dic())
         print("Contrainte de flexion calculee", p.sigmaH())
@@ -205,7 +207,7 @@ class EC5_Poutre():
             results_flexion += "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ff0000;\">NOK</span></p></body></html>"
 #        results_flexion.format(sigmaMd, fmd, tauxTravail)
 
-        gui.textBrowser.setHtml(QtGui.QApplication.translate("Dialog", results_flexion, None, QtGui.QApplication.UnicodeUTF8))
+        gui.textBrowser.setHtml(QtCore.QT_TRANSLATE_NOOP("Dialog", results_flexion))
 
 FreeCADGui.addCommand('EC5_Poutre', EC5_Poutre())
 

@@ -33,11 +33,23 @@ __title__="FreeCAD Timber API"
 __author__ = "Jonathan Wiedemann"
 __url__ = "http://www.freecadweb.org"
 
-import FreeCAD, FreeCADGui
-import Arch, Draft, Part
-import math, DraftGeomUtils, DraftVecUtils
-from FreeCAD import Vector, Rotation, Placement, Console
-from PySide import QtCore, QtGui
+import FreeCAD
+if FreeCAD.GuiUp:
+    import Arch, Draft, Part
+    import math, DraftGeomUtils, DraftVecUtils
+    from FreeCAD import Vector, Rotation, Placement, Console
+    from PySide import QtCore, QtGui
+    from DraftTools import translate
+    from PySide.QtCore import QT_TRANSLATE_NOOP
+    # import TimberCommonUtils
+    from TimberCommonUtils import getTagList
+else:
+    # \cond
+    def translate(ctxt,txt):
+        return txt
+    def QT_TRANSLATE_NOOP(ctxt,txt):
+        return txt
+    # \endcond
 
 import os
 __dir__ = os.path.dirname(__file__)
@@ -48,17 +60,6 @@ def makeTimberListing(objs, export):
     #if display:
     tb.printTimberList()
     #return tb.getTimberList()
-
-def getTagList():
-    taglist = []
-    for obj in FreeCAD.ActiveDocument.Objects :
-        try :
-            if obj.Tag:
-                if taglist.count(str(obj.Tag)) == 0:
-                    taglist.append(str(obj.Tag))
-        except AttributeError:
-            pass
-    return taglist
 
 def listingfilter(items):
     doc = FreeCAD.ActiveDocument
@@ -180,12 +181,12 @@ class _ListingTaskPanel:
         return int(QtGui.QDialogButtonBox.Ok|QtGui.QDialogButtonBox.Cancel)
 
     def retranslateUi(self, TaskPanel):
-        TaskPanel.setWindowTitle(QtGui.QApplication.translate("Timber", "Timber Listing", None, QtGui.QApplication.UnicodeUTF8))
-        self.title.setText(QtGui.QApplication.translate("Timber", "Press Ctrl to multiple selection", None, QtGui.QApplication.UnicodeUTF8))
-        self.textobjlist.setText(QtGui.QApplication.translate("Timber", "Objects to be listed", None, QtGui.QApplication.UnicodeUTF8))
-        self.infoText.setText(QtGui.QApplication.translate("Timber", "Export", None, QtGui.QApplication.UnicodeUTF8))
-        self.checkSpreadsheet.setText(QtGui.QApplication.translate("Timber", "Make Spreadsheet", None, QtGui.QApplication.UnicodeUTF8))
-        self.checkShape.setText(QtGui.QApplication.translate("Timber", "Make aligned shapes", None, QtGui.QApplication.UnicodeUTF8))
+        TaskPanel.setWindowTitle(QT_TRANSLATE_NOOP("Timber", "Timber Listing"))
+        self.title.setText(QT_TRANSLATE_NOOP("Timber", "Press Ctrl to multiple selection"))
+        self.textobjlist.setText(QT_TRANSLATE_NOOP("Timber", "Objects to be listed"))
+        self.infoText.setText(QT_TRANSLATE_NOOP("Timber", "Export"))
+        self.checkSpreadsheet.setText(QT_TRANSLATE_NOOP("Timber", "Make Spreadsheet"))
+        self.checkShape.setText(QT_TRANSLATE_NOOP("Timber", "Make aligned shapes"))
 
 class Listing():
     def __init__(self, objs, export):

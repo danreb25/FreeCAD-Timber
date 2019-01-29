@@ -28,9 +28,14 @@ if FreeCAD.GuiUp:
     import FreeCADGui
     from PySide import QtCore, QtGui
     from DraftTools import translate
+    from PySide.QtCore import QT_TRANSLATE_NOOP
 else:
+    # \cond
     def translate(ctxt,txt):
         return txt
+    def QT_TRANSLATE_NOOP(ctxt,txt):
+        return txt
+    # \endcond
 # waiting for Timber_rc and eventual FreeCAD integration
 import os
 __dir__ = os.path.dirname(__file__)
@@ -59,8 +64,8 @@ def makeTimberBeam2( name = 'TimberBeam' ):
 
 
 #        def execute(self, obj):
-            
-    
+
+
 
 def makeTimberBeam(length=None, width=None, height=None, name="TimberBeam"):
     '''makeTimberBeam([length],[width],[heigth],[name]): creates a
@@ -169,11 +174,11 @@ class _CommandTimberBeam:
         "sets up a taskbox widget"
         w = QtGui.QWidget()
         ui = FreeCADGui.UiLoader()
-        w.setWindowTitle(translate("Arch","Structure options", utf8_decode=True))
+        w.setWindowTitle(QT_TRANSLATE_NOOP("Arch","Structure options"))
         grid = QtGui.QGridLayout(w)
 
         # presets box
-        labelp = QtGui.QLabel(translate("Timber","Preset", utf8_decode=True))
+        labelp = QtGui.QLabel(QT_TRANSLATE_NOOP("Timber","Preset"))
         valuep = QtGui.QComboBox()
         presetslist = TimberComponent.getPresetsList()
         #fpresets = [" "]
@@ -184,32 +189,32 @@ class _CommandTimberBeam:
         grid.addWidget(valuep,0,1,1,1)
 
         # length
-        label1 = QtGui.QLabel(translate("Timber","Length", utf8_decode=True))
+        label1 = QtGui.QLabel(QT_TRANSLATE_NOOP("Timber","Length"))
         self.vLength = ui.createWidget("Gui::InputField")
         self.vLength.setText(self.FORMAT % self.Length)
         grid.addWidget(label1,1,0,1,1)
         grid.addWidget(self.vLength,1,1,1,1)
 
         # width
-        label2 = QtGui.QLabel(translate("Timber","Width", utf8_decode=True))
+        label2 = QtGui.QLabel(QT_TRANSLATE_NOOP("Timber","Width"))
         self.vWidth = ui.createWidget("Gui::InputField")
         self.vWidth.setText(self.FORMAT % self.Width)
         grid.addWidget(label2,2,0,1,1)
         grid.addWidget(self.vWidth,2,1,1,1)
 
         # height
-        label3 = QtGui.QLabel(translate("Timber","Height", utf8_decode=True))
+        label3 = QtGui.QLabel(QT_TRANSLATE_NOOP("Timber","Height"))
         self.vHeight = ui.createWidget("Gui::InputField")
         self.vHeight.setText(self.FORMAT % self.Height)
         grid.addWidget(label3,3,0,1,1)
         grid.addWidget(self.vHeight,3,1,1,1)
 
         # horizontal button
-        value5 = QtGui.QPushButton(translate("Arch","Rotate", utf8_decode=True))
+        value5 = QtGui.QPushButton(QT_TRANSLATE_NOOP("Arch","Rotate"))
         grid.addWidget(value5,4,0,1,2)
 
         # continue button
-        label4 = QtGui.QLabel(translate("Arch","Con&tinue", utf8_decode=True))
+        label4 = QtGui.QLabel(QT_TRANSLATE_NOOP("Arch","Con&tinue"))
         value4 = QtGui.QCheckBox()
         value4.setObjectName("ContinueCmd")
         value4.setLayoutDirection(QtCore.Qt.RightToLeft)
@@ -291,13 +296,13 @@ class _TimberBeam(ArchComponent.Component):
         #structure.setEditorMode("Placement", 1)
         structure.MoveWithHost = True
         ArchComponent.addToComponent( obj , structure , "Base" )
-    
+
     def execute(self, obj):
         "creates the structure shape"
         print("TimberBeam.execute : " + str(obj.Name) )
         if self.clone(obj):
             return
-            
+
         # creating base shape
         print("TB Placement : ", obj.Placement)
         print("Structure Placement : ", obj.Base.Placement)
@@ -353,12 +358,12 @@ class _TimberBeam(ArchComponent.Component):
                                         print("Arch: unable to cut object ", o.Name, " from ", obj.Name)
 
         obj.Shape = base
-        
+
         #obj.Placement = obj.Base.Placement
         print("TB Placement : ", obj.Placement)
         print("Structure Placement : ", obj.Base.Placement)
-        
-        
+
+
         #base = None
         #if obj.Base:
         #    if obj.Base.isDerivedFrom("Part::Feature"):
@@ -374,7 +379,7 @@ class _TimberBeam(ArchComponent.Component):
         #print("TimberBeam.execute : " + str(obj.Name) )
         #base = obj.Base.Shape.copy()
         #                return
-        
+
     def onChanged(self,obj,prop):
         print("TimberBeam.onChanged : " + str(obj.Name) + ' - ' + str(prop))
         #if prop == 'Placement':
@@ -399,7 +404,7 @@ class _TimberBeam(ArchComponent.Component):
         obj.addProperty("App::PropertyLink","End","Timber","Type of machining at beam end")
         obj.addProperty("App::PropertyLinkList","Machinings","Timber","All machinings of this beam")
         self.Type = "TimberBeam"
-        
+
         obj.Preset = TimberComponent.getPresetsList()
         base = Arch.makeStructure()
         #base.MoveWithHost = True
@@ -442,7 +447,7 @@ class _TimberBeam(ArchComponent.Component):
                     obj.Height = presetData[1]
         if prop == "Placement":
             obj.Base.Placement = obj.Placement
-    
+
     def getPresetData(self, preset):
         #print("TimberBeam getpresetData")
         #preset = obj.Preset

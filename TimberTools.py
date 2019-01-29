@@ -35,20 +35,15 @@ import Arch, Draft, Part
 import math, DraftGeomUtils, DraftVecUtils
 from FreeCAD import Vector, Rotation, Placement, Console
 from PySide import QtCore, QtGui
+from PySide.QtCore import QT_TRANSLATE_NOOP
+# import TimberCommonUtils
+from TimberCommonUtils import getTagList
+
 
 import os
 __dir__ = os.path.dirname(__file__)
 
-def getTagList():
-    taglist = []
-    for obj in FreeCAD.ActiveDocument.Objects :
-        try :
-            if obj.Tag:
-                if taglist.count(str(obj.Tag)) == 0:
-                    taglist.append(str(obj.Tag))
-        except AttributeError:
-            pass
-    return taglist
+
 
 def addTag(objects,tag):
     for obj in objects:
@@ -113,9 +108,9 @@ class _AddTagTaskPanel:
         return int(QtGui.QDialogButtonBox.Ok|QtGui.QDialogButtonBox.Cancel)
 
     def retranslateUi(self, TaskPanel):
-        TaskPanel.setWindowTitle(QtGui.QApplication.translate("Arch", "Add Tag", None, QtGui.QApplication.UnicodeUTF8))
-        self.title.setText(QtGui.QApplication.translate("Arch", "Existing Tag", None, QtGui.QApplication.UnicodeUTF8))
-        self.infoText.setText(QtGui.QApplication.translate("Arch", "Tag", None, QtGui.QApplication.UnicodeUTF8))
+        TaskPanel.setWindowTitle(QT_TRANSLATE_NOOP("Arch", "Add Tag"))
+        self.title.setText(QT_TRANSLATE_NOOP("Arch", "Existing Tag"))
+        self.infoText.setText(QT_TRANSLATE_NOOP("Arch", "Tag"))
 
 class _CommandRepartition:
     "the Timber Repartition command definition"

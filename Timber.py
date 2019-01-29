@@ -32,8 +32,8 @@ __url__ = "http://www.freecadweb.org"
 
 import FreeCAD
 if FreeCAD.GuiUp:
-	import FreeCADGui
-	FreeCADGui.updateLocale()
+    import FreeCADGui
+    FreeCADGui.updateLocale()
 
 from TimberComponent import *
 from TimberTools import *

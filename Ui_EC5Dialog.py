@@ -28,7 +28,8 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
+from PySide import QtCore, QtGui
+from PySide.QtCore import QT_TRANSLATE_NOOP
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -281,52 +282,52 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_3.setText(QtGui.QApplication.translate("Dialog", "<html><head/><body><p><span style=\" font-size:12pt;\">Poutre 2 appuis - </span>Flexion et Cisaillement </p><p>Eurocodes 5</p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_6.setText(QtGui.QApplication.translate("Dialog", "Récuperer données", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_3.setText(QtGui.QApplication.translate("Dialog", "Element", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_5.setText(QtGui.QApplication.translate("Dialog", "Materiaux", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboBox_2.setItemText(0, QtGui.QApplication.translate("Dialog", "Bois Massif", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboBox_2.setItemText(1, QtGui.QApplication.translate("Dialog", "Lamellé Collé", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_4.setText(QtGui.QApplication.translate("Dialog", "Classe mécanique", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboBox.setItemText(0, QtGui.QApplication.translate("Dialog", "C18", None, QtGui.QApplication.UnicodeUTF8))
-        self.comboBox.setItemText(1, QtGui.QApplication.translate("Dialog", "C24", None, QtGui.QApplication.UnicodeUTF8))
-        self.label.setText(QtGui.QApplication.translate("Dialog", "Base", None, QtGui.QApplication.UnicodeUTF8))
-        self.doubleSpinBox_8.setSuffix(QtGui.QApplication.translate("Dialog", " mm", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_2.setText(QtGui.QApplication.translate("Dialog", "Hauteur", None, QtGui.QApplication.UnicodeUTF8))
-        self.doubleSpinBox_9.setSuffix(QtGui.QApplication.translate("Dialog", " mm", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_16.setText(QtGui.QApplication.translate("Dialog", "Longueur", None, QtGui.QApplication.UnicodeUTF8))
-        self.doubleSpinBox_7.setSuffix(QtGui.QApplication.translate("Dialog", " mm", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_7.setText(QtGui.QApplication.translate("Dialog", "<html><head/><body><p><span style=\" font-weight:600;\">Vérification de la flexion</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton.setText(QtGui.QApplication.translate("Dialog", "Vérifier !", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_8.setText(QtGui.QApplication.translate("Dialog", "Moment fléchissant Max", None, QtGui.QApplication.UnicodeUTF8))
-        self.doubleSpinBox.setSuffix(QtGui.QApplication.translate("Dialog", " MPa", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_10.setText(QtGui.QApplication.translate("Dialog", "Kmod associé", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_11.setText(QtGui.QApplication.translate("Dialog", "Kcrit associé", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_12.setText(QtGui.QApplication.translate("Dialog", "Ksys associé", None, QtGui.QApplication.UnicodeUTF8))
-        self.textBrowser_2.setHtml(QtGui.QApplication.translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        Dialog.setWindowTitle(QT_TRANSLATE_NOOP("Dialog", "Dialog"))
+        self.label_3.setText(QT_TRANSLATE_NOOP("Dialog", "<html><head/><body><p><span style=\" font-size:12pt;\">Poutre 2 appuis - </span>Flexion et Cisaillement </p><p>Eurocodes 5</p></body></html>"))
+        self.label_6.setText(QT_TRANSLATE_NOOP("Dialog", "Récuperer données"))
+        self.pushButton_3.setText(QT_TRANSLATE_NOOP("Dialog", "Element"))
+        self.label_5.setText(QT_TRANSLATE_NOOP("Dialog", "Materiaux"))
+        self.comboBox_2.setItemText(0, QT_TRANSLATE_NOOP("Dialog", "Bois Massif"))
+        self.comboBox_2.setItemText(1, QT_TRANSLATE_NOOP("Dialog", "Lamellé Collé"))
+        self.label_4.setText(QT_TRANSLATE_NOOP("Dialog", "Classe mécanique"))
+        self.comboBox.setItemText(0, QT_TRANSLATE_NOOP("Dialog", "C18"))
+        self.comboBox.setItemText(1, QT_TRANSLATE_NOOP("Dialog", "C24"))
+        self.label.setText(QT_TRANSLATE_NOOP("Dialog", "Base"))
+        self.doubleSpinBox_8.setSuffix(QT_TRANSLATE_NOOP("Dialog", " mm"))
+        self.label_2.setText(QT_TRANSLATE_NOOP("Dialog", "Hauteur"))
+        self.doubleSpinBox_9.setSuffix(QT_TRANSLATE_NOOP("Dialog", " mm"))
+        self.label_16.setText(QT_TRANSLATE_NOOP("Dialog", "Longueur"))
+        self.doubleSpinBox_7.setSuffix(QT_TRANSLATE_NOOP("Dialog", " mm"))
+        self.label_7.setText(QT_TRANSLATE_NOOP("Dialog", "<html><head/><body><p><span style=\" font-weight:600;\">Vérification de la flexion</span></p></body></html>"))
+        self.pushButton.setText(QT_TRANSLATE_NOOP("Dialog", "Vérifier !"))
+        self.label_8.setText(QT_TRANSLATE_NOOP("Dialog", "Moment fléchissant Max"))
+        self.doubleSpinBox.setSuffix(QT_TRANSLATE_NOOP("Dialog", " MPa"))
+        self.label_10.setText(QT_TRANSLATE_NOOP("Dialog", "Kmod associé"))
+        self.label_11.setText(QT_TRANSLATE_NOOP("Dialog", "Kcrit associé"))
+        self.label_12.setText(QT_TRANSLATE_NOOP("Dialog", "Ksys associé"))
+        self.textBrowser_2.setHtml(QT_TRANSLATE_NOOP("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Cantarell\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Contrainte de flexion induite : ---</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Resistance de calcul en flexion : ---</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Taux de travail : --- %</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#00ff00;\">Ok</span>/<span style=\" color:#ff0000;\">NOK</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_13.setText(QtGui.QApplication.translate("Dialog", "<html><head/><body><p><span style=\" font-weight:600;\">Vérification du cisaillement</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_2.setText(QtGui.QApplication.translate("Dialog", "Vérifier !", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_9.setText(QtGui.QApplication.translate("Dialog", "Effort Tranchant Max", None, QtGui.QApplication.UnicodeUTF8))
-        self.doubleSpinBox_2.setSuffix(QtGui.QApplication.translate("Dialog", " MPa", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_14.setText(QtGui.QApplication.translate("Dialog", "Kmod associé", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_15.setText(QtGui.QApplication.translate("Dialog", "Hauteur efficace", None, QtGui.QApplication.UnicodeUTF8))
-        self.doubleSpinBox_10.setSuffix(QtGui.QApplication.translate("Dialog", " mm", None, QtGui.QApplication.UnicodeUTF8))
-        self.textBrowser.setHtml(QtGui.QApplication.translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#00ff00;\">Ok</span>/<span style=\" color:#ff0000;\">NOK</span></p></body></html>"))
+        self.label_13.setText(QT_TRANSLATE_NOOP("Dialog", "<html><head/><body><p><span style=\" font-weight:600;\">Vérification du cisaillement</span></p></body></html>"))
+        self.pushButton_2.setText(QT_TRANSLATE_NOOP("Dialog", "Vérifier !"))
+        self.label_9.setText(QT_TRANSLATE_NOOP("Dialog", "Effort Tranchant Max"))
+        self.doubleSpinBox_2.setSuffix(QT_TRANSLATE_NOOP("Dialog", " MPa"))
+        self.label_14.setText(QT_TRANSLATE_NOOP("Dialog", "Kmod associé"))
+        self.label_15.setText(QT_TRANSLATE_NOOP("Dialog", "Hauteur efficace"))
+        self.doubleSpinBox_10.setSuffix(QT_TRANSLATE_NOOP("Dialog", " mm"))
+        self.textBrowser.setHtml(QT_TRANSLATE_NOOP("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Cantarell\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Contrainte de flexion induite : ---</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Resistance de calcul en flexion : ---</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Taux de travail : --- %</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#00ff00;\">Ok</span>/<span style=\" color:#ff0000;\">NOK</span></p></body></html>", None, QtGui.QApplication.UnicodeUTF8))
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#00ff00;\">Ok</span>/<span style=\" color:#ff0000;\">NOK</span></p></body></html>"))
 
 
 if __name__ == "__main__":
@@ -337,4 +338,3 @@ if __name__ == "__main__":
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec_())
-
