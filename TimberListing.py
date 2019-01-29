@@ -35,6 +35,7 @@ __url__ = "http://www.freecadweb.org"
 
 import FreeCAD
 if FreeCAD.GuiUp:
+    import FreeCADGui
     import Arch, Draft, Part
     import math, DraftGeomUtils, DraftVecUtils
     from FreeCAD import Vector, Rotation, Placement, Console
